@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta Tag Generator | Create Perfect SEO Meta Tags</title>
+    <meta name="description" content="Free online tool to generate perfect meta tags for your website. Improve SEO with optimized meta titles, descriptions, and keywords.">
+    <meta name="keywords" content="meta tag generator, seo meta tags, html meta tags, meta description generator, meta title generator">
+    <meta name="author" content="Meta Tag Generator">
+    <meta name="robots" content="index, follow">
+    <style>
+        :root {
+            --bg-color: #1E1E2F;
+            --text-color: #EAEAEA;
+            --header-bg: #2B2D42;
+            --accent: #FFD700;
+            --card-bg: #3A3D5B;
+            --hover-bg: #FFD700;
+            --hover-text: #1E1E2F;
+            --button-hover: #E6C200;
+            --shadow: rgba(255, 215, 0, 0.2);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px var(--shadow);
+        }
+        
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .tool-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #2B2D42;
+            color: var(--text-color);
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+        
+        textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        
+        button {
+            background-color: var(--accent);
+            color: #1E1E2F;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        button:hover {
+            background-color: var(--button-hover);
+        }
+        
+        .result-container {
+            margin-top: 30px;
+        }
+        
+        .result-code {
+            background-color: #2B2D42;
+            padding: 15px;
+            border-radius: 4px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        
+        .copy-btn {
+            margin-top: 15px;
+        }
+        
+        .ad-container {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .how-to-use {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        .how-to-use h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+        
+        .how-to-use ol {
+            padding-left: 20px;
+        }
+        
+        .how-to-use li {
+            margin-bottom: 10px;
+        }
+        
+        @media (max-width: 768px) {
+            .tool-card, .how-to-use {
+                padding: 15px;
+            }
+            
+            button {
+                width: 100%;
+            }
+        }
+        
+        /* AdSense responsive ad styling */
+        .adsbygoogle {
+            background-color: transparent;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Meta Tag Generator</h1>
+            <p class="subtitle">Create perfect meta tags for your website</p>
+        </header>
+        
+        <!-- AdSense Ad Slot -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense ad unit ID -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                 crossorigin="anonymous"></script>
+            <!-- MetaTagGenerator_Top -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="tool-card">
+            <div class="form-group">
+                <label for="page-title">Page Title</label>
+                <input type="text" id="page-title" placeholder="Enter your page title (50-60 characters)">
+                <small id="title-count">0/60 characters</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-description">Meta Description</label>
+                <textarea id="meta-description" placeholder="Enter your meta description (150-160 characters)"></textarea>
+                <small id="desc-count">0/160 characters</small>
+            </div>
+            
+            <div class="form-group">
+                <label for="meta-keywords">Meta Keywords (comma separated)</label>
+                <input type="text" id="meta-keywords" placeholder="keyword1, keyword2, keyword3">
+            </div>
+            
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text" id="author" placeholder="Author name">
+            </div>
+            
+            <div class="form-group">
+                <label for="viewport">Viewport</label>
+                <select id="viewport">
+                    <option value="width=device-width, initial-scale=1.0">Responsive (recommended)</option>
+                    <option value="width=1024">Fixed width (1024px)</option>
+                    <option value="width=1280">Fixed width (1280px)</option>
+                    <option value="user-scalable=no">Non-scalable (not recommended)</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="robots">Robots Meta Tag</label>
+                <select id="robots">
+                    <option value="index, follow">Index, Follow</option>
+                    <option value="noindex, nofollow">Noindex, Nofollow</option>
+                    <option value="index, nofollow">Index, Nofollow</option>
+                    <option value="noindex, follow">Noindex, Follow</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="charset">Character Encoding</label>
+                <select id="charset">
+                    <option value="UTF-8">UTF-8 (recommended)</option>
+                    <option value="ISO-8859-1">ISO-8859-1</option>
+                    <option value="UTF-16">UTF-16</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="og-type">OpenGraph Type</label>
+                <select id="og-type">
+                    <option value="website">Website</option>
+                    <option value="article">Article</option>
+                    <option value="blog">Blog</option>
+                    <option value="product">Product</option>
+                </select>
+            </div>
+            
+            <button id="generate-btn">Generate Meta Tags</button>
+            
+            <div class="result-container" id="result-container" style="display: none;">
+                <h3>Your Meta Tags:</h3>
+                <div class="result-code" id="result-code"></div>
+                <button class="copy-btn" id="copy-btn">Copy to Clipboard</button>
+            </div>
+        </div>
+        
+        <!-- AdSense Ad Slot -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense ad unit ID -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+                 crossorigin="anonymous"></script>
+            <!-- MetaTagGenerator_Bottom -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+                 data-ad-slot="XXXXXXXXXX"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <div class="how-to-use">
+            <h2>How to Use This Meta Tag Generator</h2>
+            <ol>
+                <li><strong>Enter your page title</strong> - Keep it between 50-60 characters for optimal SEO results.</li>
+                <li><strong>Write your meta description</strong> - Aim for 150-160 characters that accurately describe your page content.</li>
+                <li><strong>Add relevant keywords</strong> - Separate them with commas (though keywords have less SEO impact than before).</li>
+                <li><strong>Set other meta options</strong> - Choose appropriate viewport, robots, and OpenGraph settings.</li>
+                <li><strong>Generate your meta tags</strong> - Click the button to create your optimized meta tags.</li>
+                <li><strong>Copy and paste</strong> - Add the generated code to the &lt;head&gt; section of your HTML document.</li>
+            </ol>
+            
+            <h3 style="margin-top: 20px;">Why Meta Tags Are Important</h3>
+            <p>Meta tags help search engines understand your content and influence how your pages appear in search results. Properly optimized meta tags can:</p>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li>Improve click-through rates from search results</li>
+                <li>Help with search engine rankings</li>
+                <li>Control how your content appears when shared on social media</li>
+                <li>Provide instructions to search engine crawlers</li>
+            </ul>
+        </div>
+    </div>
+    
+    <script>
+        // Character counters
+        const titleInput = document.getElementById('page-title');
+        const descInput = document.getElementById('meta-description');
+        const titleCount = document.getElementById('title-count');
+        const descCount = document.getElementById('desc-count');
+        
+        titleInput.addEventListener('input', function() {
+            const length = this.value.length;
+            titleCount.textContent = `${length}/60 characters`;
+            
+            if (length > 60) {
+                titleCount.style.color = '#ff6b6b';
+            } else if (length > 50) {
+                titleCount.style.color = '#FFD700';
+            } else {
+                titleCount.style.color = '#EAEAEA';
+            }
+        });
+        
+        descInput.addEventListener('input', function() {
+            const length = this.value.length;
+            descCount.textContent = `${length}/160 characters`;
+            
+            if (length > 160) {
+                descCount.style.color = '#ff6b6b';
+            } else if (length > 150) {
+                descCount.style.color = '#FFD700';
+            } else {
+                descCount.style.color = '#EAEAEA';
+            }
+        });
+        
+        // Generate meta tags
+        document.getElementById('generate-btn').addEventListener('click', function() {
+            const pageTitle = document.getElementById('page-title').value;
+            const metaDescription = document.getElementById('meta-description').value;
+            const metaKeywords = document.getElementById('meta-keywords').value;
+            const author = document.getElementById('author').value;
+            const viewport = document.getElementById('viewport').value;
+            const robots = document.getElementById('robots').value;
+            const charset = document.getElementById('charset').value;
+            const ogType = document.getElementById('og-type').value;
+            
+            // Generate the meta tags code
+            let metaTags = `<!-- Primary Meta Tags -->\n`;
+            metaTags += `<title>${escapeHtml(pageTitle)}</title>\n`;
+            metaTags += `<meta name="description" content="${escapeHtml(metaDescription)}">\n`;
+            
+            if (metaKeywords) {
+                metaTags += `<meta name="keywords" content="${escapeHtml(metaKeywords)}">\n`;
+            }
+            
+            if (author) {
+                metaTags += `<meta name="author" content="${escapeHtml(author)}">\n`;
+            }
+            
+            metaTags += `<meta name="robots" content="${robots}">\n`;
+            metaTags += `<meta charset="${charset}">\n`;
+            metaTags += `<meta name="viewport" content="${viewport}">\n\n`;
+            
+            // OpenGraph / Social Media Meta Tags
+            metaTags += `<!-- OpenGraph / Facebook Meta Tags -->\n`;
+            metaTags += `<meta property="og:type" content="${ogType}">\n`;
+            metaTags += `<meta property="og:title" content="${escapeHtml(pageTitle)}">\n`;
+            metaTags += `<meta property="og:description" content="${escapeHtml(metaDescription)}">\n\n`;
+            
+            // Twitter Meta Tags
+            metaTags += `<!-- Twitter Meta Tags -->\n`;
+            metaTags += `<meta name="twitter:card" content="summary_large_image">\n`;
+            metaTags += `<meta name="twitter:title" content="${escapeHtml(pageTitle)}">\n`;
+            metaTags += `<meta name="twitter:description" content="${escapeHtml(metaDescription)}">`;
+            
+            // Display the result
+            document.getElementById('result-code').textContent = metaTags;
+            document.getElementById('result-container').style.display = 'block';
+            
+            // Scroll to result
+            document.getElementById('result-container').scrollIntoView({ behavior: 'smooth' });
+        });
+        
+        // Copy to clipboard
+        document.getElementById('copy-btn').addEventListener('click', function() {
+            const resultCode = document.getElementById('result-code');
+            const range = document.createRange();
+            range.selectNode(resultCode);
+            window.getSelection().removeAllRanges();
+            window.getSelection().addRange(range);
+            document.execCommand('copy');
+            window.getSelection().removeAllRanges();
+            
+            // Change button text temporarily
+            const originalText = this.textContent;
+            this.textContent = 'Copied!';
+            setTimeout(() => {
+                this.textContent = originalText;
+            }, 2000);
+        });
+        
+        // Helper function to escape HTML
+        function escapeHtml(unsafe) {
+            if (!unsafe) return '';
+            return unsafe
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+    </script>
+</body>
+</html>
