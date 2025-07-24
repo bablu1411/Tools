@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Character Counter tool. Count characters, words, lines, and more with our advanced text analysis tool.">
+    <meta name="keywords" content="character counter, word counter, text analysis, SEO tool, writing tool">
+    <title>Character Counter | Advanced Text Analysis Tool</title>
+    <style>
+        :root {
+            --bg-color: #1E1E2F;
+            --text-color: #EAEAEA;
+            --header-bg: #2B2D42;
+            --accent: #FFD700;
+            --card-bg: #3A3D5B;
+            --hover-bg: #FFD700;
+            --hover-text: #1E1E2F;
+            --button-hover: #E6C200;
+            --shadow: rgba(255, 215, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+        }
+
+        .tool-card:hover h2,
+        .tool-card:hover .counter-label {
+            color: var(--hover-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #2B2D42;
+            color: var(--text-color);
+            font-size: 16px;
+            min-height: 200px;
+            resize: vertical;
+            transition: border 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .counter-results {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .counter-item {
+            background-color: rgba(43, 45, 66, 0.7);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+
+        .counter-label {
+            font-size: 0.9rem;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .counter-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #1E1E2F;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .instructions {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .ad-container {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .tool-card {
+                padding: 15px;
+            }
+            
+            .counter-results {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .counter-results {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* How it works section */
+        .how-it-works {
+            margin-top: 40px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--accent);
+            color: var(--hover-text);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Character Counter</h1>
+            <p class="subtitle">Count characters, words, lines, and more in your text</p>
+        </header>
+
+        <!-- AdSense Ad Unit - Top -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- CharacterCounter_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="tool-card">
+            <div class="form-group">
+                <label for="text-input">Enter your text below:</label>
+                <textarea id="text-input" placeholder="Type or paste your text here to analyze it..."></textarea>
+            </div>
+
+            <div class="counter-results">
+                <div class="counter-item">
+                    <div class="counter-label">Characters</div>
+                    <div id="char-count" class="counter-value">0</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-label">Characters (no spaces)</div>
+                    <div id="char-no-spaces-count" class="counter-value">0</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-label">Words</div>
+                    <div id="word-count" class="counter-value">0</div>
+                </div>
+                <div class="counter-item">
+                    <div class="counter-label">Lines</div>
+                    <div id="line-count" class="counter-value">0</div>
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button id="clear-btn" class="btn">Clear Text</button>
+                <button id="copy-btn" class="btn">Copy Text</button>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Middle -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- CharacterCounter_Middle -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="instructions">
+            <h2>Why Use Our Character Counter?</h2>
+            <ul>
+                <li><strong>Accurate counting</strong> - Get precise character, word, and line counts</li>
+                <li><strong>Real-time results</strong> - See counts update as you type</li>
+                <li><strong>Multiple metrics</strong> - Track characters with and without spaces</li>
+                <li><strong>Writing optimization</strong> - Perfect for social media posts, essays, and SEO content</li>
+                <li><strong>Completely free</strong> - No limits, no registration required</li>
+            </ul>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How Our Character Counter Works</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Enter Your Text</h3>
+                    <p>Type or paste any text into the input box. The counter will analyze your text in real-time.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>View Statistics</h3>
+                    <p>See detailed counts for characters (with and without spaces), words, and lines.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Manage Your Text</h3>
+                    <p>Use the clear button to start fresh or copy your text to the clipboard with one click.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Optimize Your Writing</h3>
+                    <p>Perfect for meeting character limits on social media, forms, or content with specific length requirements.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Bottom -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- CharacterCounter_Bottom -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text-input');
+            const charCount = document.getElementById('char-count');
+            const charNoSpacesCount = document.getElementById('char-no-spaces-count');
+            const wordCount = document.getElementById('word-count');
+            const lineCount = document.getElementById('line-count');
+            const clearBtn = document.getElementById('clear-btn');
+            const copyBtn = document.getElementById('copy-btn');
+
+            // Update counts when text changes
+            textInput.addEventListener('input', updateCounts);
+
+            // Clear button functionality
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+                updateCounts();
+                textInput.focus();
+            });
+
+            // Copy button functionality
+            copyBtn.addEventListener('click', function() {
+                textInput.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(function() {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+
+            function updateCounts() {
+                const text = textInput.value;
+                
+                // Character count (including spaces)
+                charCount.textContent = text.length;
+                
+                // Character count (excluding spaces)
+                charNoSpacesCount.textContent = text.replace(/\s/g, '').length;
+                
+                // Word count
+                const words = text.trim() === '' ? [] : text.trim().split(/\s+/);
+                wordCount.textContent = words.length;
+                
+                // Line count
+                const lines = text.trim() === '' ? 0 : text.split('\n').length;
+                lineCount.textContent = lines;
+            }
+
+            // Initialize counts
+            updateCounts();
+        });
+    </script>
+</body>
+</html>
