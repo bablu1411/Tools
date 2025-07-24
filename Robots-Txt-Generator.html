@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Robots.txt generator tool. Create a perfect robots.txt file for your website with our easy-to-use generator.">
+    <meta name="keywords" content="robots.txt generator, SEO tool, search engine optimization, website crawler, robots.txt creator">
+    <title>Robots.txt Generator | Create Perfect robots.txt Files</title>
+    <style>
+        :root {
+            --bg-color: #1E1E2F;
+            --text-color: #EAEAEA;
+            --header-bg: #2B2D42;
+            --accent: #FFD700;
+            --card-bg: #3A3D5B;
+            --hover-bg: #FFD700;
+            --hover-text: #1E1E2F;
+            --button-hover: #E6C200;
+            --shadow: rgba(255, 215, 0, 0.2);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input[type="text"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #2B2D42;
+            color: var(--text-color);
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        textarea {
+            min-height: 200px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            margin: 15px 0;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .checkbox-item input {
+            margin-right: 10px;
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #1E1E2F;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: var(--button-hover);
+        }
+
+        .result-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .copy-btn {
+            margin-top: 15px;
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .copy-btn:hover {
+            background-color: #45a049;
+        }
+
+        .instructions {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .ad-container {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .tool-card {
+                padding: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* How it works section */
+        .how-it-works {
+            margin-top: 40px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--accent);
+            color: var(--hover-text);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Robots.txt Generator</h1>
+            <p class="subtitle">Create a perfectly optimized robots.txt file for your website</p>
+        </header>
+
+        <!-- AdSense Ad Unit - Top -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- RobotsTxtGenerator_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="tool-card">
+            <div class="form-group">
+                <label for="user-agent">User-agent (Search Engine Bot)</label>
+                <select id="user-agent">
+                    <option value="*">All User Agents (*)</option>
+                    <option value="Googlebot">Googlebot</option>
+                    <option value="Googlebot-Image">Googlebot-Image</option>
+                    <option value="Googlebot-News">Googlebot-News</option>
+                    <option value="Googlebot-Video">Googlebot-Video</option>
+                    <option value="Bingbot">Bingbot</option>
+                    <option value="Slurp">Yahoo Slurp</option>
+                    <option value="DuckDuckBot">DuckDuckBot</option>
+                    <option value="Baiduspider">Baiduspider</option>
+                    <option value="YandexBot">YandexBot</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Access Permissions</label>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="radio" id="allow-all" name="access" value="allow" checked>
+                        <label for="allow-all">Allow all pages to be crawled (recommended for most sites)</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="radio" id="disallow-all" name="access" value="disallow">
+                        <label for="disallow-all">Disallow all pages (only use for development sites)</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="disallow-paths">Paths to Disallow (one per line)</label>
+                <textarea id="disallow-paths" placeholder="/private/
+/admin/
+/temp/"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="allow-paths">Paths to Allow (one per line)</label>
+                <textarea id="allow-paths" placeholder="/public/
+/images/"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="sitemap-url">Sitemap URL (optional)</label>
+                <input type="text" id="sitemap-url" placeholder="https://example.com/sitemap.xml">
+            </div>
+
+            <button id="generate-btn" class="btn">Generate Robots.txt</button>
+
+            <div id="result-container" class="result-container">
+                <label for="robots-txt">Your Robots.txt File:</label>
+                <textarea id="robots-txt" readonly></textarea>
+                <button id="copy-btn" class="btn copy-btn">Copy to Clipboard</button>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Middle -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- RobotsTxtGenerator_Middle -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="instructions">
+            <h2>How to Use Your Robots.txt File</h2>
+            <ol>
+                <li>Copy the generated robots.txt content</li>
+                <li>Create a new text file named "robots.txt" in the root directory of your website</li>
+                <li>Paste the content into this file</li>
+                <li>Upload the file to your server's root directory (where your homepage is)</li>
+                <li>Test your file using Google Search Console's robots.txt tester</li>
+            </ol>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How Our Robots.txt Generator Works</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Select User Agent</h3>
+                    <p>Choose which search engine bots the rules will apply to. Select "*" for all bots or specify particular crawlers.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Set Access Permissions</h3>
+                    <p>Decide whether to allow or disallow crawling by default. Most websites should allow crawling with specific exceptions.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Specify Paths</h3>
+                    <p>List any specific paths you want to allow or disallow. These will override your default permission setting.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Add Sitemap (Optional)</h3>
+                    <p>Include your sitemap URL to help search engines discover your content more efficiently.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Generate & Implement</h3>
+                    <p>Click generate, then copy and upload the file to your website's root directory.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Bottom -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- RobotsTxtGenerator_Bottom -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const generateBtn = document.getElementById('generate-btn');
+            const copyBtn = document.getElementById('copy-btn');
+            const resultContainer = document.getElementById('result-container');
+            const robotsTxt = document.getElementById('robots-txt');
+
+            generateBtn.addEventListener('click', function() {
+                const userAgent = document.getElementById('user-agent').value;
+                const accessType = document.querySelector('input[name="access"]:checked').value;
+                const disallowPaths = document.getElementById('disallow-paths').value;
+                const allowPaths = document.getElementById('allow-paths').value;
+                const sitemapUrl = document.getElementById('sitemap-url').value;
+
+                let content = `User-agent: ${userAgent}\n`;
+
+                if (accessType === 'disallow') {
+                    content += `Disallow: /\n`;
+                }
+
+                if (disallowPaths.trim() !== '') {
+                    const paths = disallowPaths.split('\n');
+                    paths.forEach(path => {
+                        if (path.trim() !== '') {
+                            content += `Disallow: ${path.trim()}\n`;
+                        }
+                    });
+                }
+
+                if (allowPaths.trim() !== '') {
+                    const paths = allowPaths.split('\n');
+                    paths.forEach(path => {
+                        if (path.trim() !== '') {
+                            content += `Allow: ${path.trim()}\n`;
+                        }
+                    });
+                }
+
+                if (sitemapUrl.trim() !== '') {
+                    content += `\nSitemap: ${sitemapUrl.trim()}\n`;
+                }
+
+                robotsTxt.value = content;
+                resultContainer.style.display = 'block';
+            });
+
+            copyBtn.addEventListener('click', function() {
+                robotsTxt.select();
+                document.execCommand('copy');
+                copyBtn.textContent = 'Copied!';
+                setTimeout(function() {
+                    copyBtn.textContent = 'Copy to Clipboard';
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
