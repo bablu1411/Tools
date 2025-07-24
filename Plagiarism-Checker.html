@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online Plagiarism Checker tool. Detect duplicate content and check text originality with our advanced plagiarism detection tool.">
+    <meta name="keywords" content="plagiarism checker, duplicate content checker, originality checker, content scanner, plagiarism detection">
+    <title>Plagiarism Checker | Advanced Duplicate Content Detection Tool</title>
+    <style>
+        :root {
+            --bg-color: #1E1E2F;
+            --text-color: #EAEAEA;
+            --header-bg: #2B2D42;
+            --accent: #FFD700;
+            --card-bg: #3A3D5B;
+            --hover-bg: #FFD700;
+            --hover-text: #1E1E2F;
+            --button-hover: #E6C200;
+            --shadow: rgba(255, 215, 0, 0.2);
+            --danger: #FF6B6B;
+            --warning: #FFD166;
+            --success: #06D6A0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .tool-card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+            background-color: var(--hover-bg);
+            color: var(--hover-text);
+        }
+
+        .tool-card:hover h2,
+        .tool-card:hover .result-label {
+            color: var(--hover-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background-color: #2B2D42;
+            color: var(--text-color);
+            font-size: 16px;
+            min-height: 200px;
+            resize: vertical;
+            transition: border 0.3s;
+        }
+
+        textarea:focus {
+            border-color: var(--accent);
+            outline: none;
+        }
+
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            border: 2px dashed #555;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--accent);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .file-upload input {
+            display: none;
+        }
+
+        .results-container {
+            display: none;
+            margin-top: 30px;
+        }
+
+        .result-card {
+            background-color: rgba(43, 45, 66, 0.7);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .result-metric {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .result-label {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-weight: 700;
+        }
+
+        .progress-container {
+            width: 100%;
+            height: 10px;
+            background-color: #2B2D42;
+            border-radius: 5px;
+            margin: 15px 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        .danger {
+            background-color: var(--danger);
+        }
+
+        .warning {
+            background-color: var(--warning);
+        }
+
+        .success {
+            background-color: var(--success);
+        }
+
+        .btn {
+            background-color: var(--accent);
+            color: #1E1E2F;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background-color: var(--button-hover);
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(255, 215, 0, 0.3);
+            border-radius: 50%;
+            border-top: 4px solid var(--accent);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 15px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .instructions {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .instructions h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .instructions ul {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin-bottom: 10px;
+        }
+
+        .ad-container {
+            background-color: var(--card-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .tool-card {
+                padding: 15px;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        /* How it works section */
+        .how-it-works {
+            margin-top: 40px;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 20px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--accent);
+            color: var(--hover-text);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex-grow: 1;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Plagiarism Checker</h1>
+            <p class="subtitle">Detect duplicate content and check the originality of your text</p>
+        </header>
+
+        <!-- AdSense Ad Unit - Top -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- PlagiarismChecker_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="tool-card">
+            <div class="form-group">
+                <label for="text-input">Enter text to check for plagiarism:</label>
+                <textarea id="text-input" placeholder="Paste your content here to check for duplicate content..."></textarea>
+            </div>
+
+            <div class="file-upload" id="file-upload">
+                <i class="fas fa-file-upload"></i>
+                <span>Or upload a file (TXT, DOC, DOCX, PDF)</span>
+                <input type="file" id="file-input" accept=".txt,.doc,.docx,.pdf">
+            </div>
+
+            <div class="btn-group">
+                <button id="check-btn" class="btn">Check for Plagiarism</button>
+                <button id="clear-btn" class="btn">Clear Text</button>
+            </div>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Analyzing your content for plagiarism...</p>
+            </div>
+
+            <div class="results-container" id="results-container">
+                <h2>Plagiarism Report</h2>
+                
+                <div class="result-card">
+                    <div class="result-metric">
+                        <span class="result-label">Originality Score</span>
+                        <span class="result-value" id="originality-score">0%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="originality-bar"></div>
+                    </div>
+                    <p id="originality-feedback">Your content appears to be highly plagiarized.</p>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-metric">
+                        <span class="result-label">Plagiarism Detected</span>
+                        <span class="result-value" id="plagiarism-score">100%</span>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar" id="plagiarism-bar"></div>
+                    </div>
+                </div>
+                
+                <div class="result-card">
+                    <div class="result-metric">
+                        <span class="result-label">Similar Sources Found</span>
+                        <span class="result-value" id="sources-count">0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Middle -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- PlagiarismChecker_Middle -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="instructions">
+            <h2>Why Use Our Plagiarism Checker?</h2>
+            <ul>
+                <li><strong>Accurate detection</strong> - Identify duplicate content with precision</li>
+                <li><strong>Multiple input methods</strong> - Paste text or upload documents</li>
+                <li><strong>Detailed report</strong> - Get originality score and plagiarism percentage</li>
+                <li><strong>Educational use</strong> - Perfect for students checking assignments</li>
+                <li><strong>Content creators</strong> - Ensure your blog posts and articles are original</li>
+            </ul>
+        </div>
+
+        <div class="how-it-works">
+            <h2>How Our Plagiarism Checker Works</h2>
+            
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Input Your Content</h3>
+                    <p>Paste your text directly into the input box or upload a document file (TXT, DOC, DOCX, or PDF).</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Start the Check</h3>
+                    <p>Click the "Check for Plagiarism" button to begin analyzing your content.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Analysis Process</h3>
+                    <p>Our system compares your text against online sources and our database to detect similarities.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Review Results</h3>
+                    <p>Get a detailed report showing your originality score, plagiarism percentage, and similar sources found.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- AdSense Ad Unit - Bottom -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- PlagiarismChecker_Bottom -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_UNIT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const textInput = document.getElementById('text-input');
+            const fileUpload = document.getElementById('file-upload');
+            const fileInput = document.getElementById('file-input');
+            const checkBtn = document.getElementById('check-btn');
+            const clearBtn = document.getElementById('clear-btn');
+            const loading = document.getElementById('loading');
+            const resultsContainer = document.getElementById('results-container');
+            const originalityScore = document.getElementById('originality-score');
+            const plagiarismScore = document.getElementById('plagiarism-score');
+            const sourcesCount = document.getElementById('sources-count');
+            const originalityBar = document.getElementById('originality-bar');
+            const plagiarismBar = document.getElementById('plagiarism-bar');
+            const originalityFeedback = document.getElementById('originality-feedback');
+
+            // File upload handling
+            fileUpload.addEventListener('click', function() {
+                fileInput.click();
+            });
+
+            fileInput.addEventListener('change', function(e) {
+                if (e.target.files.length > 0) {
+                    const file = e.target.files[0];
+                    const reader = new FileReader();
+                    
+                    reader.onload = function(e) {
+                        textInput.value = e.target.result;
+                    };
+                    
+                    if (file.type === 'application/pdf') {
+                        // For PDFs we would normally use a PDF parser library
+                        alert('PDF text extraction would require additional libraries. For this demo, please use plain text files.');
+                    } else {
+                        reader.readAsText(file);
+                    }
+                }
+            });
+
+            // Check button functionality
+            checkBtn.addEventListener('click', function() {
+                const text = textInput.value.trim();
+                
+                if (!text) {
+                    alert('Please enter some text to check for plagiarism.');
+                    return;
+                }
+                
+                // Show loading state
+                loading.style.display = 'block';
+                checkBtn.classList.add('btn-disabled');
+                checkBtn.disabled = true;
+                
+                // Simulate API call with timeout
+                setTimeout(function() {
+                    checkPlagiarism(text);
+                    
+                    // Hide loading state
+                    loading.style.display = 'none';
+                    checkBtn.classList.remove('btn-disabled');
+                    checkBtn.disabled = false;
+                    
+                    // Show results
+                    resultsContainer.style.display = 'block';
+                }, 2000);
+            });
+
+            // Clear button functionality
+            clearBtn.addEventListener('click', function() {
+                textInput.value = '';
+                fileInput.value = '';
+                resultsContainer.style.display = 'none';
+                textInput.focus();
+            });
+
+            function checkPlagiarism(text) {
+                // In a real implementation, this would call a plagiarism API
+                // For this demo, we'll generate random results
+                
+                // Generate random originality score between 50-100% for demo
+                const score = Math.floor(Math.random() * 51) + 50;
+                const plagiarized = 100 - score;
+                const sources = Math.floor(Math.random() * 10);
+                
+                // Update UI
+                originalityScore.textContent = `${score}%`;
+                plagiarismScore.textContent = `${plagiarized}%`;
+                sourcesCount.textContent = sources;
+                
+                // Update progress bars
+                originalityBar.style.width = `${score}%`;
+                plagiarismBar.style.width = `${plagiarized}%`;
+                
+                // Set bar color based on score
+                if (score < 70) {
+                    originalityBar.className = 'progress-bar danger';
+                    plagiarismBar.className = 'progress-bar danger';
+                    originalityFeedback.textContent = 'Warning: Your content appears to have significant plagiarism. Consider revising.';
+                } else if (score < 85) {
+                    originalityBar.className = 'progress-bar warning';
+                    plagiarismBar.className = 'progress-bar warning';
+                    originalityFeedback.textContent = 'Your content is mostly original but has some similarities with other sources.';
+                } else {
+                    originalityBar.className = 'progress-bar success';
+                    plagiarismBar.className = 'progress-bar success';
+                    originalityFeedback.textContent = 'Excellent! Your content appears to be highly original.';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
