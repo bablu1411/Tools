@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Free online Word Counter tool that counts words, characters, sentences, and paragraphs in real-time. Perfect for writers, students, and content creators.">
-    <meta name="keywords" content="word counter, character counter, paragraph counter, sentence counter, writing tool">
-    <title>Word Counter | Count Words, Characters & More Instantly</title>
+    <meta name="description" content="Free online word counter tool that counts words, characters, sentences, and paragraphs in your text. Perfect for writers, students, and professionals.">
+    <meta name="keywords" content="word counter, character counter, text analysis, writing tool, seo tool">
+    <title>Word Counter | Count Words & Characters Online</title>
     <style>
         :root {
-            --bg: #1E1E2F;
-            --text: #EAEAEA;
+            --bg-color: #1E1E2F;
+            --text-color: #EAEAEA;
             --header-bg: #2B2D42;
             --accent: #FFD700;
             --card-bg: #3A3D5B;
             --hover-bg: #FFD700;
             --hover-text: #1E1E2F;
-            --btn-hover: #E6C200;
-            --shadow: 0 4px 8px rgba(255, 215, 0, 0.2);
+            --button-hover: #E6C200;
+            --shadow: rgba(255, 215, 0, 0.2);
         }
 
         * {
@@ -27,291 +27,358 @@
         }
 
         body {
-            background: var(--bg);
-            color: var(--text);
-            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
             padding: 20px;
-            line-height: 1.5;
         }
 
         .container {
-            max-width: 800px;
+            max-width: 1000px;
             margin: 0 auto;
-        }
-
-        /* Ad Containers */
-        .ad-space {
-            background: var(--card-bg);
-            padding: 10px;
-            border-radius: 8px;
-            margin: 15px 0;
-            text-align: center;
-            min-height: 90px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: var(--shadow);
-        }
-
-        .ad-label {
-            font-size: 0.7rem;
-            color: var(--accent);
-            text-transform: uppercase;
-            margin-bottom: 5px;
-        }
-
-        /* Tool Styling */
-        header {
-            background: var(--header-bg);
             padding: 20px;
-            border-radius: 10px;
-            margin-bottom: 15px;
+        }
+
+        header {
+            background-color: var(--header-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
             text-align: center;
-            box-shadow: var(--shadow);
+            box-shadow: 0 4px 6px var(--shadow);
         }
 
         h1 {
             color: var(--accent);
-            margin-bottom: 5px;
-            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .ad-container {
+            background-color: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 4px var(--shadow);
         }
 
         .tool-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 15px;
-            box-shadow: var(--shadow);
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px var(--shadow);
             transition: all 0.3s ease;
         }
 
         .tool-card:hover {
-            background: var(--hover-bg);
+            background-color: var(--hover-bg);
             color: var(--hover-text);
-            transform: translateY(-3px);
-            box-shadow: 0 6px 12px rgba(255, 215, 0, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px var(--shadow);
+        }
+
+        .tool-card:hover .result-box {
+            background-color: rgba(30, 30, 47, 0.8);
+            color: var(--text-color);
         }
 
         textarea {
             width: 100%;
             min-height: 200px;
             padding: 15px;
-            border-radius: 8px;
+            border-radius: 6px;
             border: none;
-            background: rgba(255, 255, 255, 0.1);
-            color: inherit;
-            font-size: 1rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-color);
+            font-size: 16px;
             resize: vertical;
-            margin-bottom: 15px;
-            transition: background 0.3s;
+            margin-bottom: 20px;
+            transition: background-color 0.3s;
         }
 
         textarea:focus {
             outline: none;
-            background: rgba(255, 255, 255, 0.15);
+            background-color: rgba(255, 255, 255, 0.15);
         }
 
         .tool-card:hover textarea {
-            background: rgba(30, 30, 47, 0.3);
-            color: var(--hover-text);
+            background-color: rgba(30, 30, 47, 0.8);
+            color: var(--text-color);
         }
 
-        .btn-group {
+        .button-group {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
         }
 
         button {
-            background: var(--accent);
-            color: #000;
+            background-color: var(--accent);
+            color: var(--hover-text);
             border: none;
             padding: 10px 20px;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
-            transition: background 0.3s;
-            flex: 1;
+            font-weight: bold;
+            transition: all 0.3s;
+            flex-grow: 1;
         }
 
         button:hover {
-            background: var(--btn-hover);
-        }
-
-        .btn-clear {
-            background: transparent;
-            border: 1px solid var(--accent);
-            color: var(--accent);
-        }
-
-        .btn-clear:hover {
-            background: rgba(255, 215, 0, 0.1);
+            background-color: var(--button-hover);
+            transform: translateY(-2px);
         }
 
         .results {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
+            gap: 15px;
+            margin-top: 20px;
         }
 
         .result-box {
-            background: rgba(0, 0, 0, 0.2);
-            padding: 12px;
-            border-radius: 8px;
+            background-color: rgba(0, 0, 0, 0.2);
+            padding: 15px;
+            border-radius: 6px;
             text-align: center;
+            transition: all 0.3s;
         }
 
         .result-value {
-            font-size: 1.5rem;
+            font-size: 24px;
             font-weight: bold;
             color: var(--accent);
             margin-top: 5px;
         }
 
         .tool-card:hover .result-value {
-            color: var(--hover-text);
+            color: var(--header-bg);
         }
 
-        @media (max-width: 600px) {
+        .how-to-use {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 4px 8px var(--shadow);
+        }
+
+        .how-to-use h2 {
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .how-to-use ul {
+            padding-left: 20px;
+        }
+
+        .how-to-use li {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 768px) {
             .results {
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            h1 {
-                font-size: 1.5rem;
+            .button-group {
+                flex-direction: column;
             }
         }
 
-        @media (max-width: 400px) {
+        @media (max-width: 480px) {
             .results {
                 grid-template-columns: 1fr;
             }
             
-            .btn-group {
-                flex-direction: column;
+            .container {
+                padding: 10px;
+            }
+            
+            header, .tool-card, .how-to-use {
+                padding: 15px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Top Ad Space -->
-        <div class="ad-space">
-            <div>
-                <div class="ad-label">Advertisement</div>
-                <!-- Paste your Google AdSense code here -->
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-                     data-ad-slot="YOUR_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+        <!-- AdSense Top Ad -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- WordCounter_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
         </div>
 
         <header>
             <h1>Word Counter</h1>
-            <p>Count words, characters, sentences, and paragraphs in real-time</p>
+            <p>Count words, characters, sentences, and paragraphs in your text</p>
         </header>
 
-        <main>
-            <div class="tool-card">
-                <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
-                
-                <div class="btn-group">
-                    <button id="count-btn">Count</button>
-                    <button id="clear-btn" class="btn-clear">Clear</button>
+        <div class="tool-card">
+            <textarea id="text-input" placeholder="Type or paste your text here..."></textarea>
+            
+            <div class="button-group">
+                <button id="count-btn">Count</button>
+                <button id="clear-btn">Clear</button>
+                <button id="copy-btn">Copy Text</button>
+                <button id="upper-case">UPPERCASE</button>
+                <button id="lower-case">lowercase</button>
+            </div>
+            
+            <div class="results">
+                <div class="result-box">
+                    <div>Words</div>
+                    <div class="result-value" id="word-count">0</div>
                 </div>
-                
-                <div class="results">
-                    <div class="result-box">
-                        <div>Words</div>
-                        <div class="result-value" id="word-count">0</div>
-                    </div>
-                    <div class="result-box">
-                        <div>Characters</div>
-                        <div class="result-value" id="char-count">0</div>
-                    </div>
-                    <div class="result-box">
-                        <div>Characters (no spaces)</div>
-                        <div class="result-value" id="char-nospaces-count">0</div>
-                    </div>
-                    <div class="result-box">
-                        <div>Sentences</div>
-                        <div class="result-value" id="sentence-count">0</div>
-                    </div>
-                    <div class="result-box">
-                        <div>Paragraphs</div>
-                        <div class="result-value" id="paragraph-count">0</div>
-                    </div>
+                <div class="result-box">
+                    <div>Characters</div>
+                    <div class="result-value" id="char-count">0</div>
+                </div>
+                <div class="result-box">
+                    <div>Characters (no spaces)</div>
+                    <div class="result-value" id="char-no-spaces-count">0</div>
+                </div>
+                <div class="result-box">
+                    <div>Sentences</div>
+                    <div class="result-value" id="sentence-count">0</div>
+                </div>
+                <div class="result-box">
+                    <div>Paragraphs</div>
+                    <div class="result-value" id="paragraph-count">0</div>
+                </div>
+                <div class="result-box">
+                    <div>Reading Time</div>
+                    <div class="result-value" id="reading-time">0s</div>
                 </div>
             </div>
-        </main>
+        </div>
 
-        <!-- Bottom Ad Space -->
-        <div class="ad-space">
-            <div>
-                <div class="ad-label">Advertisement</div>
-                <!-- Paste your Google AdSense code here -->
-                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"></script>
-                <ins class="adsbygoogle"
-                     style="display:block"
-                     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-                     data-ad-slot="YOUR_AD_SLOT_ID"
-                     data-ad-format="auto"
-                     data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-            </div>
+        <!-- AdSense Bottom Ad -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"
+                crossorigin="anonymous"></script>
+            <!-- WordCounter_Bottom -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <div class="how-to-use">
+            <h2>How to Use the Word Counter</h2>
+            <ul>
+                <li>Type or paste your text into the text area above</li>
+                <li>The tool will automatically count words, characters, sentences, and paragraphs</li>
+                <li>Use the buttons to transform your text to uppercase or lowercase</li>
+                <li>Click "Copy Text" to copy your text to the clipboard</li>
+                <li>Click "Clear" to reset the text area and counters</li>
+            </ul>
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const textInput = document.getElementById('text-input');
+            const wordCount = document.getElementById('word-count');
+            const charCount = document.getElementById('char-count');
+            const charNoSpacesCount = document.getElementById('char-no-spaces-count');
+            const sentenceCount = document.getElementById('sentence-count');
+            const paragraphCount = document.getElementById('paragraph-count');
+            const readingTime = document.getElementById('reading-time');
             const countBtn = document.getElementById('count-btn');
             const clearBtn = document.getElementById('clear-btn');
-            const counters = {
-                words: document.getElementById('word-count'),
-                chars: document.getElementById('char-count'),
-                charsNoSpaces: document.getElementById('char-nospaces-count'),
-                sentences: document.getElementById('sentence-count'),
-                paragraphs: document.getElementById('paragraph-count')
-            };
+            const copyBtn = document.getElementById('copy-btn');
+            const upperCaseBtn = document.getElementById('upper-case');
+            const lowerCaseBtn = document.getElementById('lower-case');
 
-            // Count functions
-            const count = {
-                words: text => text.trim() ? text.trim().split(/\s+/).length : 0,
-                chars: text => text.length,
-                charsNoSpaces: text => text.replace(/\s+/g, '').length,
-                sentences: text => {
-                    if (!text.trim()) return 0;
-                    return text.split(/[.!?]+\s|$/).filter(s => s.trim().length > 0).length;
-                },
-                paragraphs: text => {
-                    if (!text.trim()) return 0;
-                    return text.split(/\n+/).filter(p => p.trim().length > 0).length;
-                }
-            };
-
-            // Update all counts
-            function updateCounts() {
-                const text = textInput.value;
-                for (const [key, element] of Object.entries(counters)) {
-                    element.textContent = count[key](text);
-                }
-            }
-
-            // Event listeners
+            // Count automatically as user types
             textInput.addEventListener('input', updateCounts);
+
+            // Count button (redundant but kept for UX)
             countBtn.addEventListener('click', updateCounts);
-            clearBtn.addEventListener('click', () => {
+
+            // Clear button
+            clearBtn.addEventListener('click', function() {
                 textInput.value = '';
+                updateCounts();
+                textInput.focus();
+            });
+
+            // Copy button
+            copyBtn.addEventListener('click', function() {
+                textInput.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+
+            // Uppercase button
+            upperCaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value.toUpperCase();
                 updateCounts();
             });
 
-            // Initial count
+            // Lowercase button
+            lowerCaseBtn.addEventListener('click', function() {
+                textInput.value = textInput.value.toLowerCase();
+                updateCounts();
+            });
+
+            function updateCounts() {
+                const text = textInput.value;
+                
+                // Word count (counts sequences of non-whitespace characters)
+                const words = text.trim() === '' ? 0 : text.trim().split(/\s+/).length;
+                wordCount.textContent = words;
+                
+                // Character count (including spaces)
+                charCount.textContent = text.length;
+                
+                // Character count (excluding spaces)
+                charNoSpacesCount.textContent = text.replace(/\s+/g, '').length;
+                
+                // Sentence count (counts sequences ending with .!? followed by space or end)
+                const sentences = text.trim() === '' ? 0 : text.split(/[.!?]+(?=\s|$)/).filter(Boolean).length;
+                sentenceCount.textContent = sentences;
+                
+                // Paragraph count (counts sequences of text separated by two newlines)
+                const paragraphs = text.trim() === '' ? 0 : text.replace(/\n$/gm, '').split(/\n\s*\n/).length;
+                paragraphCount.textContent = paragraphs;
+                
+                // Reading time (average 200 words per minute)
+                const minutes = Math.ceil(words / 200);
+                readingTime.textContent = minutes <= 1 ? '1 min' : `${minutes} mins`;
+            }
+
+            // Initialize counts
             updateCounts();
         });
     </script>
